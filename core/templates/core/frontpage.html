@@ -1,0 +1,19 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Home | {% endblock %}
+
+{% block content %}
+    <div>
+        {% for post in posts %}
+        
+            <h3>{{ post.created_at|date:'M-d' }}</h3>
+            <a href="{% url 'post_detail' post.category.slug post.slug %}">
+                
+                <h1>{{ post.title}}</h1>
+            </a>
+            <p>{{ post.intro }}</p>
+        
+        {% endfor%}
+    </div>
+
+{% endblock %}

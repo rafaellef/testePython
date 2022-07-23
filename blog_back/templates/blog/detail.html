@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ post.title }} | {% endblock %}
+
+{% block content %}
+{% if post.image %}
+                <figure>
+                    <img src="{{ post.image.url }}" alt="">
+                </figure>
+                {% endif %}
+<h1>{{ post.title }}</h1>
+<h3>{{ post.created_at }}</h3>
+<div>
+    {{ post.body }}
+</div>
+<p>Categoria: <a href="{% url 'category_detail' post.category.slug %}">{{ post.category }}</a></p>
+{% endblock %}

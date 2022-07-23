@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Busca | {% endblock %}
+
+{% block content %}
+    <div>
+        <div>
+            <h1>Resultados</h1>
+            <h3>Pesquisa "{{ query }}"</h3>
+        </div>
+        {% for post in posts %}
+        
+            <h3>{{ post.created_at|date:'M-d' }}</h3>
+            <a href="{% url 'post_detail' post.category.slug post.slug %}">
+                <h1>{{ post.title}}</h1>
+            </a>
+            <p>{{ post.intro }}</p>
+        
+            {% empty %}
+                <div>
+                    <p>Não existem resultados para esta pesquisa</p>
+                </div>
+
+        {% endfor%}
+    </div>
+
+{% endblock %}
